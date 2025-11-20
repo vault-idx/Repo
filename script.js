@@ -73,7 +73,7 @@ const ctx = canvas.getContext('2d');
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 const img = new Image();
-img.src = 'assets/smokeimage.jpeg';
+img.src = 'smokeimage.jpeg';
 
 img.onload = () => {
     function startMist() {
