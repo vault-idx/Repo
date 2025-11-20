@@ -1,27 +1,37 @@
 *{margin:0;padding:0;box-sizing:border-box}
 body{background:#000;color:#0f0;font-family:'Courier New',monospace;overflow:hidden;height:100vh;cursor:none}
-#startBtn{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);padding:30px 70px;font-size:3rem;background:#000;border:5px solid #0f0;color:#0f0;transition:.4s}
-#startBtn:hover{background:#0f0;color:#000;box-shadow:0 0 50px #0f0}
+#startBtn{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);padding:30px 80px;font-size:3rem;border:5px solid #0f0;background:#000;color:#0f0;transition:.5s}
+#startBtn:hover{background:#0f0;color:#000;box-shadow:0 0 60px #0f0}
 
 #typewriter,#subtext,#trollNote{position:absolute;width:90%;left:50%;transform:translateX(-50%);text-align:center;opacity:0;font-size:2.4rem}
 #typewriter{top:12%}
-#subtext{top:34%;font-size:2rem;color:#8f8}
+#subtext{top:34%;font-size:2rem}
 #trollNote{top:78%;font-size:2.2rem;color:#f66}
 
-#buttons{position:absolute;top:55%;left:50%;transform:translateX(-50%);display:flex;gap:100px;opacity:0}
-.btn{padding:30px 80px;font-size:3rem;cursor:pointer;border:5px solid;transition:all .4s}
+#buttons{position:absolute;top:55%;left:50%;transform:translateX(-50%);display:flex;gap:120px;opacity:0}
+.btn{padding:30px 90px;font-size:3rem;border:5px solid;cursor:pointer;transition:.4s}
 .no{background:#001100;border-color:#0f0;color:#0f0}
 .yes{background:#110000;border-color:#f00;color:#f00}
-.yes.glow{box-shadow:0 0 80px #f00,0 0 120px #f00;transform:scale(1.2)}
+.yes.glow{box-shadow:0 0 100px #f00;transform:scale(1.25)}
 
-#emergencyFlash{position:fixed;inset:0;pointer-events:none;opacity:0;background:#300;animation:flash 0.6s infinite}
-@keyframes flash{0%,100%{background:#300}50%{background:#f003}}
+#emergencyLights{position:fixed;inset:0;pointer-events:none;opacity:0;
+    background:
+        radial-gradient(circle at 5% 5%, #f003 10%, transparent 12%),
+        radial-gradient(circle at 95% 5%, #f003 10%, transparent 12%),
+        radial-gradient(circle at 5% 95%, #f003 10%, transparent 12%),
+        radial-gradient(circle at 95% 95%, #f003 10%, transparent 12%);
+    animation:spin 3s linear infinite;
+}
+@keyframes spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
 
-#mistCanvas{position:fixed;inset:0;opacity:0;pointer-events:none}
-#secret{position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0;pointer-events:none;z-index:10}
-.final-note{font-size:1.7rem;margin-bottom:50px;animation:glow 3s infinite alternate}
-#secretLink{font-size:3.5rem;color:#0ff;margin:50px 0;animation:glow 2s infinite alternate}
+#whiteOverlay{position:fixed;inset:0;background:#000;opacity:0;pointer-events:none;transition:opacity 8s linear}
+
+#scratchCanvas{position:fixed;inset:0;opacity:0;pointer-events:none;background:#fff}
+
+#secret{position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0;z-index:10;pointer-events:none}
+#qrCode{max-width:280px;margin:30px 0;border:10px solid #0ff;box-shadow:0 0 50px #0ff}
+.final-note{font-size:1.8rem;margin:40px 0;animation:glow 3s infinite}
 .password-box{font-size:2.5rem}
-#copyBtn{margin-left:25px;padding:15px 35px;background:#0f0;color:#000;border:none;cursor:pointer;font-weight:bold}
-@keyframes glow{from{text-shadow:0 0 20px} to{text-shadow:0 0 70px #0ff}}
-@keyframes vibrate{0%,100%{transform:translate(0)}20%{transform:translate(-20px,20px)}40%{transform:translate(20px,-20px)}60%{transform:translate(-20px,-15px)}80%{transform:translate(20px,15px)}}
+#copyBtn{margin-left:30px;padding:15px 40px;background:#0f0;color:#000;border:none;cursor:pointer;font-weight:bold}
+@keyframes glow{from{text-shadow:0 0 20px #0ff}to{text-shadow:0 0 70px #0ff}}
+@keyframes vibrate{0%,100%{transform:translate(0)}20%,60%{transform:translate(-25px,20px)}40%,80%{transform:translate(25px,-20px)}}
