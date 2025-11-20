@@ -8,30 +8,27 @@ body{background:#000;color:#0f0;font-family:'Courier New',monospace;overflow:hid
 #subtext{top:34%;font-size:2rem}
 #trollNote{top:78%;font-size:2.2rem;color:#f66}
 
-#buttons{position:absolute;top:55%;left:50%;transform:translateX(-50%);display:flex;gap:120px;opacity:0}
-.btn{padding:30px 90px;font-size:3rem;border:5px solid;cursor:pointer;transition:.4s}
+#buttons{position:absolute;top:55%;left:50%;transform:translateX(-50%);display:flex;gap:120px;opacity:0;z-index:10}
+.btn{padding:30px 90px;font-size:3rem;border:5px solid;cursor:pointer;transition:.4s;position:relative;z-index:10}
 .no{background:#001100;border-color:#0f0;color:#0f0}
 .yes{background:#110000;border-color:#f00;color:#f00}
-.yes.glow{box-shadow:0 0 100px #f00;transform:scale(1.25)}
+.yes.glow{box-shadow:0 0 120px #f00;transform:scale(1.3)}
 
 #emergencyLights{position:fixed;inset:0;pointer-events:none;opacity:0;
     background:
-        radial-gradient(circle at 5% 5%, #f003 10%, transparent 12%),
-        radial-gradient(circle at 95% 5%, #f003 10%, transparent 12%),
-        radial-gradient(circle at 5% 95%, #f003 10%, transparent 12%),
-        radial-gradient(circle at 95% 95%, #f003 10%, transparent 12%);
-    animation:spin 3s linear infinite;
+        radial-gradient(circle at 5% 5%, #f003 12%, transparent 13%),
+        radial-gradient(circle at 95% 5%, #f003 12%, transparent 13%),
+        radial-gradient(circle at 5% 95%, #f003 12%, transparent 13%),
+        radial-gradient(circle at 95% 95%, #f003 12%, transparent 13%);
+    animation:spin 2.5s linear infinite;
 }
 @keyframes spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
 
-#whiteOverlay{position:fixed;inset:0;background:#000;opacity:0;pointer-events:none;transition:opacity 8s linear}
-
-#scratchCanvas{position:fixed;inset:0;opacity:0;pointer-events:none;background:#fff}
-
-#secret{position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0;z-index:10;pointer-events:none}
-#qrCode{max-width:280px;margin:30px 0;border:10px solid #0ff;box-shadow:0 0 50px #0ff}
-.final-note{font-size:1.8rem;margin:40px 0;animation:glow 3s infinite}
-.password-box{font-size:2.5rem}
+#scratchCanvas{position:fixed;inset:0;opacity:0;pointer-events:none}
+#secret{position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;opacity:0;z-index:5}
+#qrCode{max-width:300px;margin:40px 0;border:12px solid #0ff;box-shadow:0 0 60px #0ff}
+.final-note{font-size:1.9rem;margin:40px 0;animation:fadeGlow 6s infinite}
+.password-box{font-size:2.6rem}
 #copyBtn{margin-left:30px;padding:15px 40px;background:#0f0;color:#000;border:none;cursor:pointer;font-weight:bold}
-@keyframes glow{from{text-shadow:0 0 20px #0ff}to{text-shadow:0 0 70px #0ff}}
-@keyframes vibrate{0%,100%{transform:translate(0)}20%,60%{transform:translate(-25px,20px)}40%,80%{transform:translate(25px,-20px)}}
+@keyframes fadeGlow{0%,100%{opacity:0.7;text-shadow:0 0 20px #0ff}50%{opacity:1;text-shadow:0 0 80px #0ff}}
+@keyframes vibrate{0%,100%{transform:translate(0)}25%,75%{transform:translate(-30px,25px)}50%{transform:translate(30px,-25px)}}
